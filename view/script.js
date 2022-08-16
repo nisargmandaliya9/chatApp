@@ -22,16 +22,8 @@
                 room: optionVal.value
             }, function(data){
                 if (data.nameAvail) {  
-                    if (optionVal.value == "Gryffindor") {
-                        body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
-                    } else if(optionVal.value == "Slytherin"){
-                        body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
-                    } else if(optionVal.value == "Hufflepuff"){
-                        body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
-                    } else if(optionVal.value == "Ravenclaw"){
-                        body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
-                    } 
                     roomTitle.innerText = `You are in the room: ${optionVal.value}`;
+                    body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
                     messageArea.style.display = "block";
                     loginArea.style.display = "none";
                 } else{
