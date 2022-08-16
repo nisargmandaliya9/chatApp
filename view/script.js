@@ -22,7 +22,7 @@
                 room: optionVal.value
             }, function(data){
                 if (data.nameAvail) {  
-                    body.style.backgroundImage = `url(${optionVal.value}.jpg)`;
+                    body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
                     roomTitle.innerText = `You are in the room: ${optionVal.value}`;
                     messageArea.style.display = "block";
                     loginArea.style.display = "none";
