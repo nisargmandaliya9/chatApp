@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Chat App</title>
+</head>
+<body id="body">
+    <div class="container">
+        <div class="row" id="login-area">
+            <form id="login-form" action="">
+                <h2>Socket.io Chat App</h2>
+                <div id="login-inputs">
+                    <p id="error-msg"></p>
+                    <input id="login-input" type="text" name="username" placeholder="Enter your username">
+                    <select name="room-names" id="room-names" style="color: black;">
+                        <option value="Gryffindor">Gryffindor</option>
+                        <option value="Slytherin">Slytherin</option>
+                        <option value="Hufflepuff">Hufflepuff</option>
+                        <option value="Ravenclaw">Ravenclaw</option>
+                    </select>
+                    <input type="submit" value="Join Chat">
+                </div>
+            </form>
+        </div>
+
+        <div class="row" id="message-area">
+    
+            <div class="room">
+                <h5 id="room-title"></h5>
+            </div>
+            <div class="chat">
+                <ul id="messages"></ul>
+                
+                <form id="chat-form" action="">
+                    <input type="text" id="chat-input" autocomplete="off" autofocus="on" placeholder="type your message here..." />
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
