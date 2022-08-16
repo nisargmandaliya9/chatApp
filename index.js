@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const httpServer = require('http').createServer(app);
 const socketIO = require('socket.io')(httpServer);
-let port = 3000;
 let connectedUsers = {};
 
 app.use(express.static(__dirname + "/view"));
@@ -74,6 +73,6 @@ socketIO.on('connection', function(client) {
 
 });
 
-httpServer.listen(port, function(){
-    console.log(`Server running on port ${port}`);
+httpServer.listen(process.env.PORT || 3000, function(){
+    console.log("Server running on port 3000");
 })
