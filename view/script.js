@@ -23,7 +23,7 @@
             }, function(data){
                 if (data.nameAvail) {  
                     roomTitle.innerText = `You are in the room: ${optionVal.value}`;
-                    body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
+                    body.style.background = "rgba(23, 23, 53, 0.89)";
                     messageArea.style.display = "block";
                     loginArea.style.display = "none";
                 } else{
