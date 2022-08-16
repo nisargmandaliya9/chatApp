@@ -1,4 +1,4 @@
-    let socket = io();
+    let socket = io('localhost:3000');
 
     let body = document.getElementById('body');
     let loginArea = document.getElementById('login-area');
@@ -22,8 +22,8 @@
                 room: optionVal.value
             }, function(data){
                 if (data.nameAvail) {  
+                    body.style.backgroundImage = `url(${optionVal.value}.jpg)`;
                     roomTitle.innerText = `You are in the room: ${optionVal.value}`;
-                    body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
                     messageArea.style.display = "block";
                     loginArea.style.display = "none";
                 } else{
