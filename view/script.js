@@ -22,7 +22,9 @@
                 room: optionVal.value
             }, function(data){
                 if (data.nameAvail) {
-                    console.log(body.offsetWidth);
+                    roomTitle.innerText = `You are in the room: ${optionVal.value}`;
+                    messageArea.style.display = "block";
+                    loginArea.style.display = "none";
                     if (optionVal.value == "Gryffindor") {
                         body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
                     } else if(optionVal.value == "Slytherin"){
@@ -31,10 +33,7 @@
                         body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
                     } else if(optionVal.value == "Ravenclaw"){
                         body.style.backgroundImage = `url("${optionVal.value}.jpg")`;
-                    }
-                    roomTitle.innerText = `You are in the room: ${optionVal.value}`;
-                    messageArea.style.display = "block";
-                    loginArea.style.display = "none";
+                    } 
                 } else{
                     errMessage.innerText = `${data.error}`;
                 }

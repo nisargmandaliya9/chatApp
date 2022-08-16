@@ -2,11 +2,27 @@ const express = require('express');
 const app = express();
 const httpServer = require('http').createServer(app);
 const socketIO = require('socket.io')(httpServer);
+let port = 3000;
 let connectedUsers = {};
 
 app.use(express.static(__dirname + "/view"));
 
 socketIO.on('connection', function(client) {
+
+    client.on('disconnect', function(){
+        
+        let userInfo = connectedUsers[client.id];
+
+        if (typeof userInfo !== 'undefined') {
+            client.leave(connectedUsers[client.id]);
+            socketIO.emit('message',{
+                username: 'System',
+                text: userInfo.username + ' has left!'
+            });
+            delete connectedUsers[client.id];
+        }
+       
+    });
 
     client.on('joinRoom', function(req, callback){
         
@@ -47,7 +63,7 @@ socketIO.on('connection', function(client) {
     })
     
     client.on('message', function(msg){
-        client.emit("message", msg);
+        socketIO.emit("message", msg);
     });
     
     client.emit('message', {
@@ -55,23 +71,9 @@ socketIO.on('connection', function(client) {
         text: "Hey there! Ask someone to join the chat room."
     })
     
-    client.on('disconnect', function(){
-        
-        let userInfo = connectedUsers[client.id];
-
-        if (typeof userInfo !== 'undefined') {
-            client.leave(connectedUsers[client.id]);
-            socketIO.emit('message',{
-                username: 'System',
-                text: userInfo.username + ' has left!'
-            });
-            delete connectedUsers[client.id];
-        }
-       
-    });
 
 });
 
-httpServer.listen(process.env.PORT || 3000, function(){
-    console.log("Listening on port 3000");
+httpServer.listen(port, function(){
+    console.log(`Server running on port ${port}`);
 })
